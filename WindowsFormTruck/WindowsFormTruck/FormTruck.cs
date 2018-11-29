@@ -13,7 +13,7 @@ namespace WindowsFormTruck
 {
     public partial class FormTruck : Form
     {
-        private Truck truck;
+        private ITransport truck;
         public FormTruck()
         {
             InitializeComponent();
@@ -22,16 +22,10 @@ namespace WindowsFormTruck
         {
             Bitmap bmp = new Bitmap(pictureBoxTrucks.Width, pictureBoxTrucks.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            truck.DrawTruck(gr);
+            truck.DrawCar(gr);
             pictureBoxTrucks.Image = bmp;
         }
-        
-
-        /// <summary> 
-        /// Обработка нажатия кнопок управления 
-        /// </summary> 
-        /// <param name="sender"></param> 
-        /// <param name="e"></param> 
+       
         private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки 
@@ -53,19 +47,19 @@ namespace WindowsFormTruck
             }
             Draw();
         }
-        /// <summary> 
-        /// Обработка нажатия кнопки "Создать" 
-        /// </summary> 
-        /// <param name="sender"></param> 
-        /// <param name="e"></param> 
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCreateAutotruck_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            truck = new Truck(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.BurlyWood, Color.Turquoise, true, false);
+            truck = new Aotutruck(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.Yellow, true, true);
             truck.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrucks.Width, pictureBoxTrucks.Height);
             Draw();
         }
-
-        
+        private void buttonCreateTruck_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            truck = new Truck(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
+            truck.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrucks.Width, pictureBoxTrucks.Height);
+            Draw();
+        }
     }
 }

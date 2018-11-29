@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonCreateTruck = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.pictureBoxTrucks = new System.Windows.Forms.PictureBox();
+            this.buttonCreateAotutruck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrucks)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonCreate
+            // buttonCreateTruck
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(12, 12);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(99, 27);
-            this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreateTruck.Location = new System.Drawing.Point(616, 15);
+            this.buttonCreateTruck.Name = "buttonCreateTruck";
+            this.buttonCreateTruck.Size = new System.Drawing.Size(109, 53);
+            this.buttonCreateTruck.TabIndex = 1;
+            this.buttonCreateTruck.Text = "Создать грузовик ";
+            this.buttonCreateTruck.UseVisualStyleBackColor = true;
+            this.buttonCreateTruck.Click += new System.EventHandler(this.buttonCreateTruck_Click);
             // 
             // buttonDown
             // 
@@ -104,20 +105,31 @@
             this.pictureBoxTrucks.TabIndex = 0;
             this.pictureBoxTrucks.TabStop = false;
             // 
+            // buttonCreateAotutruck
+            // 
+            this.buttonCreateAotutruck.Location = new System.Drawing.Point(731, 18);
+            this.buttonCreateAotutruck.Name = "buttonCreateAotutruck";
+            this.buttonCreateAotutruck.Size = new System.Drawing.Size(108, 50);
+            this.buttonCreateAotutruck.TabIndex = 6;
+            this.buttonCreateAotutruck.Text = "Создать грузовик полуприцеп";
+            this.buttonCreateAotutruck.UseVisualStyleBackColor = true;
+            this.buttonCreateAotutruck.Click += new System.EventHandler(this.buttonCreateAutotruck_Click);
+            // 
             // FormTruck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.buttonCreateAotutruck);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonUp);
-            this.Controls.Add(this.buttonCreate);
+            this.Controls.Add(this.buttonCreateTruck);
             this.Controls.Add(this.pictureBoxTrucks);
             this.Name = "FormTruck";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Грузовик-полупогрузчик ";
+            this.Text = "Грузовик-полуприцеп ";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrucks)).EndInit();
             this.ResumeLayout(false);
 
@@ -126,10 +138,11 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxTrucks;
-        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Button buttonCreateTruck;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
+        private System.Windows.Forms.Button buttonCreateAotutruck;
     }
 }
