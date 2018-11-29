@@ -42,6 +42,19 @@ namespace WindowsFormsTrucks
             Tilt = tilt;
            
         }
+        public Aotutruck(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 7)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Lamp = Convert.ToBoolean(strs[4]);
+                Tilt = Convert.ToBoolean(strs[5]);
+            }
+        }
         public override void DrawCar(Graphics g)
         {
             Brush brOrange = new SolidBrush(MainColor);
@@ -73,6 +86,10 @@ namespace WindowsFormsTrucks
             {
                 DopColor = color;
             }
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Lamp + ";" + Tilt + ";";
         }
+    }
     }
 
