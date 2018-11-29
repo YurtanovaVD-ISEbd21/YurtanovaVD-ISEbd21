@@ -41,10 +41,10 @@ namespace WindowsFormsTrucks
         }
         public override void DrawCar(Graphics g)
         {
-            Brush brMain = new SolidBrush(MainColor);
-            g.FillRectangle(brMain, _startPosX + 60, _startPosY + 0, 30, 30);
-            g.FillRectangle(brMain, _startPosX +30 , _startPosY +15, 30, 15);
-            g.FillRectangle(brMain, _startPosX + 60, _startPosY - 10, 30, 10);
+            Brush brOrange = new SolidBrush(MainColor);
+            g.FillRectangle(brOrange, _startPosX + 60, _startPosY + 0, 30, 30);
+            g.FillRectangle(brOrange, _startPosX +30 , _startPosY +15, 30, 15);
+            g.FillRectangle(brOrange, _startPosX + 60, _startPosY - 10, 30, 10);
             Brush brBlue = new SolidBrush(Color.LightBlue);
             g.FillRectangle(brBlue, _startPosX + 70, _startPosY + 0, 20, 20);
             Brush brBlack = new SolidBrush(Color.Black);
@@ -53,13 +53,13 @@ namespace WindowsFormsTrucks
             g.FillEllipse(brBlack, _startPosX + 75, _startPosY + 30, 15, 15);
             if (Tilt)
             {
-                Brush brDopColor = new SolidBrush(DopColor);
-                g.FillRectangle(brBlack, _startPosX + 30, _startPosY + 5, 30, 10);
+                Brush brDopColor= new SolidBrush(DopColor);
+                g.FillRectangle(brDopColor, _startPosX + 30, _startPosY + 5, 30, 10);
             }
             if (Lamp)
             {
                 Brush brYellow = new SolidBrush(Color.Yellow);
-                g.FillRectangle(brYellow, _startPosX + 85, _startPosY - 15, 5, 5);
+                g.FillRectangle(brYellow, _startPosX + 85, _startPosY - 12, 5, 5);
             }
             
         }
