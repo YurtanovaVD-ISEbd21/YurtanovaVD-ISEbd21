@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonSetTruck = new System.Windows.Forms.Button();
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.buttonSetAotutruck = new System.Windows.Forms.Button();
             this.Take = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonTake = new System.Windows.Forms.Button();
@@ -38,19 +36,10 @@
             this.maskedTextBoxTake = new System.Windows.Forms.MaskedTextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonSetTruck
-            // 
-            this.buttonSetTruck.Location = new System.Drawing.Point(902, 126);
-            this.buttonSetTruck.Name = "buttonSetTruck";
-            this.buttonSetTruck.Size = new System.Drawing.Size(109, 53);
-            this.buttonSetTruck.TabIndex = 1;
-            this.buttonSetTruck.Text = "Припарковать грузовик ";
-            this.buttonSetTruck.UseVisualStyleBackColor = true;
-            this.buttonSetTruck.Click += new System.EventHandler(this.buttonSetTruck_Click);
             // 
             // pictureBoxParking
             // 
@@ -60,16 +49,6 @@
             this.pictureBoxParking.Size = new System.Drawing.Size(1048, 493);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
-            // 
-            // buttonSetAotutruck
-            // 
-            this.buttonSetAotutruck.Location = new System.Drawing.Point(903, 185);
-            this.buttonSetAotutruck.Name = "buttonSetAotutruck";
-            this.buttonSetAotutruck.Size = new System.Drawing.Size(108, 50);
-            this.buttonSetAotutruck.TabIndex = 6;
-            this.buttonSetAotutruck.Text = "Припарковать  грузовик полуприцеп";
-            this.buttonSetAotutruck.UseVisualStyleBackColor = true;
-            this.buttonSetAotutruck.Click += new System.EventHandler(this.buttonSetAotutruck_Click);
             // 
             // Take
             // 
@@ -122,7 +101,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 95);
             this.listBox1.TabIndex = 12;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -133,11 +112,22 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Уровни:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(902, 192);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Заказать авто";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 493);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.maskedTextBoxTake);
@@ -145,8 +135,6 @@
             this.Controls.Add(this.buttonTake);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Take);
-            this.Controls.Add(this.buttonSetAotutruck);
-            this.Controls.Add(this.buttonSetTruck);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -161,8 +149,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.Button buttonSetTruck;
-        private System.Windows.Forms.Button buttonSetAotutruck;
         private System.Windows.Forms.Label Take;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonTake;
@@ -170,5 +156,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBoxTake;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -9,9 +9,10 @@ using WindowsFormsTrucks;
 namespace WindowsFormTruck
 {
     public abstract class Vehicle : ITransport 
-    {/// <summary>
-     /// Левая координата отрисовки автомобиля
-     /// </summary>
+    {   
+        /// <summary>
+        /// Левая координата отрисовки автомобиля
+        /// </summary>
         protected float _startPosX;
         /// <summary>
         /// Правая кооридната отрисовки автомобиля
@@ -41,6 +42,10 @@ namespace WindowsFormTruck
             _startPosY = y;
             _pictureWidth = width;
             _pictureHeight = height;
+        }
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
         }
         public abstract void DrawCar(Graphics g);
         public abstract void MoveTransport(Direction direction);

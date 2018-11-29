@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormTruck;
 
-namespace WindowsFormTruck
+namespace WindowsFormsCars
 {
+    public delegate void carDelegate(ITransport car);
     static class Program
     {
         /// <summary>
