@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using NLog;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsCars;
-using WindowsFormsTrucks;
-namespace WindowsFormTruck
+using WindowsFormTruck;
+
+
+namespace WindowsFormsCars
 {
     public partial class FormParking : Form
     {
@@ -25,9 +21,14 @@ namespace WindowsFormTruck
         /// Количество уровней-парковок
         /// </summary>
         private const int countLevel = 5;
+        /// <summary>
+        /// Логгер
+        /// </summary>
+        private Logger logger;
         public FormParking()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width, pictureBoxParking.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
@@ -54,7 +55,36 @@ namespace WindowsFormTruck
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        
+        private void buttonTakeCar_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex > -1)
+            {
+                if (maskedTextBoxTake.Text != "")
+                {
+                    try
+                    {
+                        var car = parking[listBox1.SelectedIndex] - Convert.ToInt32(maskedTextBoxTake.Text);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                        Graphics gr = Graphics.FromImage(bmp);
+                        car.SetPosition(5, 5, pictureBoxTake.Width, pictureBoxTake.Height);
+                        car.DrawCar(gr);
+                        pictureBoxTake.Image = bmp;
+                        logger.Info("Изъят автомобиль " + car.ToString() + " с места " + maskedTextBoxTake.Text);
+                        Draw();
+                    }
+                    catch (ParkingNotFoundException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                        pictureBoxTake.Image = bmp;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
         /// <summary>
         /// Метод обработки выбора элемента на listBoxLevels
         /// </summary>
@@ -64,7 +94,12 @@ namespace WindowsFormTruck
         {
             Draw();
         }
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Обработка нажатия кнопки "Добавить автомобиль"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSetCar_Click(object sender, EventArgs e)
         {
             form = new FormTruckConfig();
             form.AddEvent(AddCar);
@@ -78,43 +113,22 @@ namespace WindowsFormTruck
         {
             if (car != null && listBox1.SelectedIndex > -1)
             {
-                int place = parking[listBox1.SelectedIndex] + car;
-                if (place > -1)
+                try
                 {
+                    int place = parking[listBox1.SelectedIndex] + car;
+                    logger.Info("Добавлен автомобиль " + car.ToString() + " на место " + place);
                     Draw();
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
-        private void buttonTake_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedIndex > -1)
-            {
-                if (maskedTextBoxTake.Text != "")
-                {
-                    var car = parking[listBox1.SelectedIndex] - Convert.ToInt32(maskedTextBoxTake.Text);
-                    if (car != null)
-                    {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                        Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 25, pictureBoxTake.Width, pictureBoxTake.Height);
-                        car.DrawCar(gr);
-                        pictureBoxTake.Image = bmp;
-                    }
-                    else
-                    {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                        pictureBoxTake.Image = bmp;
-                    }
-                    Draw();
-                }
-            }
-        }
-
         /// <summary>
         /// Обработка нажатия пункта меню "Сохранить"
         /// </summary>
@@ -122,15 +136,17 @@ namespace WindowsFormTruck
         /// <param name="e"></param>
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (parking.SaveData(saveFileDialog1.FileName))
+                try
                 {
+                    parking.SaveData(saveFileDialog1.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog1.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -141,15 +157,21 @@ namespace WindowsFormTruck
         /// <param name="e"></param>
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (parking.LoadData(openFileDialog1.FileName))
+                try
                 {
+                    parking.LoadData(openFileDialog1.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog1.FileName);
                 }
-                else
+                catch (ParkingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Draw();
             }
