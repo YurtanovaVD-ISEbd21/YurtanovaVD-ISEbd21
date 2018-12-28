@@ -6,29 +6,29 @@ import java.awt.Graphics;
 
  public class Truck {
 	/// <summary>
-	/// Левая координата отрисовки грузовика
+	/// Г‹ГҐГўГ Гї ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ  Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГЈГ°ГіГ§Г®ГўГЁГЄГ 
 	/// </summary>
 	private int _startPosX;
 	/// <summary>
-	/// Правая кооридната отрисовки грузовика
+	/// ГЏГ°Г ГўГ Гї ГЄГ®Г®Г°ГЁГ¤Г­Г ГІГ  Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГЈГ°ГіГ§Г®ГўГЁГЄГ 
 	/// </summary>
 	private int _startPosY;
 	/// <summary>
-	/// Ширина окна грузовика
+	/// ГГЁГ°ГЁГ­Г  Г®ГЄГ­Г  ГЈГ°ГіГ§Г®ГўГЁГЄГ 
 	/// </summary>
 	private int _pictureWidth;
-	// Высота окна грузовика
+	// Г‚Г»Г±Г®ГІГ  Г®ГЄГ­Г  ГЈГ°ГіГ§Г®ГўГЁГЄГ 
 	private int _pictureHeight;
 	/// <summary>
-	/// Ширина отрисовки грузовика
+	/// ГГЁГ°ГЁГ­Г  Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГЈГ°ГіГ§Г®ГўГЁГЄГ 
 	/// </summary>
 	private final static int TruckWidth = 100;
 	/// <summary>
-	/// Высота отрисовки грузовика
+	/// Г‚Г»Г±Г®ГІГ  Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГЈГ°ГіГ§Г®ГўГЁГЄГ 
 	/// </summary>
 	private final static int TruckHeight = 60;
 	/// <summary>
-	/// Максимальная скорость
+	/// ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї Г±ГЄГ®Г°Г®Г±ГІГј
 	private int MaxSpeed;
 
 	public int getMaxSpeed() {
@@ -39,7 +39,7 @@ import java.awt.Graphics;
 		MaxSpeed = value;
 	}
 
-	/// Вес грузовика
+	/// Г‚ГҐГ± ГЈГ°ГіГ§Г®ГўГЁГЄГ 
 	private float Weight;
 
 	public float getWeight() {
@@ -50,7 +50,7 @@ import java.awt.Graphics;
 		Weight = value;
 	}
 
-	/// Основной цвет
+	/// ГЋГ±Г­Г®ГўГ­Г®Г© Г¶ГўГҐГІ
 	private Color MainColor;
 
 	public Color getMainColor() {
@@ -92,28 +92,28 @@ import java.awt.Graphics;
 
 	public void moveTruck(Direction direction) throws Exception {
 		float step = getMaxSpeed() * 100 / getWeight();
-		switch (direction) { /// вправо
+		switch (direction) { /// ГўГЇГ°Г ГўГ®
 		case Right:
 			if (_startPosX + step < _pictureWidth - TruckWidth) {
 				_startPosX += step;
 			}
 
 			break;
-		/// влево
+		/// ГўГ«ГҐГўГ®
 		case Left:
 			if (_startPosX - step > 5) {
 				_startPosX -= step;
 			}
 
 			break;
-		/// вверх
+		/// ГўГўГҐГ°Гµ
 		case Up:
 			if (_startPosY - step > 30) {
 				_startPosY -= step;
 			}
 
 			break;
-		/// вниз
+		/// ГўГ­ГЁГ§
 		case Down:
 			if (_startPosY + step < _pictureHeight - TruckHeight) {
 				_startPosY += step;
@@ -125,21 +125,21 @@ import java.awt.Graphics;
 
 	public void drawTruck(Graphics g) throws Exception {
 
-		 //Brush brOrange = new SolidBrush(Color.ORANGE);
+		 
 		  g.setColor(Color.ORANGE);
          g.fillRect( _startPosX + 60, _startPosY + 0, 30, 30);
          g.fillRect( _startPosX + 30, _startPosY + 15, 30, 15);
          g.fillRect( _startPosX + 60, _startPosY - 10, 30, 10);
-        // Brush brBlue = new SolidBrush(Color.BLUE);
+        
          g.setColor(Color.BLUE);
          g.fillRect( _startPosX + 70, _startPosY + 0, 20, 20);
-       //  Brush brBlack = new SolidBrush(Color.BLACK);
+       
         g.setColor(Color.BLACK);
          g.fillOval( _startPosX + 30, _startPosY + 30, 15, 15);
          g.fillOval( _startPosX + 50, _startPosY + 30, 15, 15);
          g.fillOval( _startPosX + 75, _startPosY + 30, 15, 15);
          g.fillRect( _startPosX + 30, _startPosY + 5, 30, 10);
-         //Brush brYellow = new SolidBrush(Color.YELLOW);
+         
          g.setColor(Color.YELLOW);
          g.fillRect( _startPosX + 85, _startPosY - 15, 5, 5);
         }
