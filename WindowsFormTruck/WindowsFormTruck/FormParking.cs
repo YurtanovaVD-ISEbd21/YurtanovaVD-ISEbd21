@@ -83,10 +83,5 @@ namespace WindowsFormTruck
                 Draw();
             }
         }
-
-        private void Take_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
