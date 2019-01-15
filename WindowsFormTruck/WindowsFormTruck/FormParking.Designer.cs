@@ -36,13 +36,15 @@
             this.buttonTake = new System.Windows.Forms.Button();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.maskedTextBoxTake = new System.Windows.Forms.MaskedTextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSetTruck
             // 
-            this.buttonSetTruck.Location = new System.Drawing.Point(869, 12);
+            this.buttonSetTruck.Location = new System.Drawing.Point(902, 126);
             this.buttonSetTruck.Name = "buttonSetTruck";
             this.buttonSetTruck.Size = new System.Drawing.Size(109, 53);
             this.buttonSetTruck.TabIndex = 1;
@@ -61,7 +63,7 @@
             // 
             // buttonSetAotutruck
             // 
-            this.buttonSetAotutruck.Location = new System.Drawing.Point(869, 71);
+            this.buttonSetAotutruck.Location = new System.Drawing.Point(903, 185);
             this.buttonSetAotutruck.Name = "buttonSetAotutruck";
             this.buttonSetAotutruck.Size = new System.Drawing.Size(108, 50);
             this.buttonSetAotutruck.TabIndex = 6;
@@ -77,7 +79,6 @@
             this.Take.Size = new System.Drawing.Size(91, 13);
             this.Take.TabIndex = 7;
             this.Take.Text = "Забрать машину";
-            this.Take.Click += new System.EventHandler(this.Take_Click);
             // 
             // label1
             // 
@@ -114,11 +115,31 @@
             this.maskedTextBoxTake.Size = new System.Drawing.Size(34, 20);
             this.maskedTextBoxTake.TabIndex = 11;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(902, 25);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.TabIndex = 12;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(940, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Уровни:";
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 493);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.maskedTextBoxTake);
             this.Controls.Add(this.pictureBoxTake);
             this.Controls.Add(this.buttonTake);
@@ -147,5 +168,7 @@
         private System.Windows.Forms.Button buttonTake;
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxTake;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label2;
     }
 }
