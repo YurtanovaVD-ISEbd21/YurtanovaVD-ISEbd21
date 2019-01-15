@@ -102,36 +102,5 @@ namespace WindowsFormTruck
                 }
             }
         }
-        /// <summary>
-        /// Метод обработки выбора элемента на listBox1
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Draw();
-        }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать грузовик полуприцеп"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetTruck_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var car = new Truck(100, 1000, dialog.Color);
-                    int place = parking[listBox1.SelectedIndex] + car;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
-        }
     }
 }
