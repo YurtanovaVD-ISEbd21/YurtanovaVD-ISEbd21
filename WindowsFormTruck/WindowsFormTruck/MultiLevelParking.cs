@@ -7,14 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsTrucks;
 using WindowsFormTruck;
- 
-namespace WindowsFormsCars
+
+namespace WindowsFormsTrucks
 {
     /// <summary>
     /// Класс-хранидище парковок
     /// </summary>
     public class MultiLevelParking
     {
+        /// <summary>
+        /// Объект от класса многоуровневой парковки
+        /// </summary>
+        MultiLevelParking parking;
         /// <summary>
         /// Список с уровнями парковки
         /// </summary>
@@ -83,24 +87,19 @@ namespace WindowsFormsCars
                     {
                         //Начинаем уровень
                         WriteToFile("Level" + Environment.NewLine, fs);
-                        for (int i = 0; i < countPlaces; i++)
+                        foreach (var Truck in level)
                         {
-                            try
+                            //Записываем тип мшаины
+                            if (Truck.GetType().Name == "Truck")
                             {
-                                var car = level[i];
-                                //Записываем тип мшаины
-                                if (car.GetType().Name == "Truck")
-                                {
-                                    WriteToFile(i + ":Truck:", fs);
-                                }
-                                if (car.GetType().Name == "Aotutruck")
-                                {
-                                    WriteToFile(i + ":Aotutruck:", fs);
-                                }
-                                //Записываемые параметры
-                                WriteToFile(car + Environment.NewLine, fs);
+                                WriteToFile(":Truck:", fs);
                             }
-                            finally { }
+                            if (Truck.GetType().Name == "Aotutruck")
+                            {
+                                WriteToFile(":Aotutruck:", fs);
+                            }
+                            //Записываемые параметры
+                            WriteToFile(Truck + Environment.NewLine, fs);
                         }
                     }
                 }
@@ -157,7 +156,8 @@ namespace WindowsFormsCars
                 throw new Exception("Неверный формат файла");
             }
             int counter = -1;
-            ITransport car = null;
+            int counterTruck = 0;
+            ITransport Truck = null;
             for (int i = 1; i < strs.Length; ++i)
             {
                 //идем по считанным записям
@@ -165,6 +165,7 @@ namespace WindowsFormsCars
                 {
                     //начинаем новый уровень
                     counter++;
+                    counterTruck = 0;
                     parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
                     continue;
                 }
@@ -174,14 +175,21 @@ namespace WindowsFormsCars
                 }
                 if (strs[i].Split(':')[1] == "Truck")
                 {
-                    car = new Truck(strs[i].Split(':')[2]);
+                    Truck = new Truck(strs[i].Split(':')[2]);
                 }
                 else if (strs[i].Split(':')[1] == "Aotutruck")
                 {
-                    car = new Aotutruck(strs[i].Split(':')[2]);
+                    Truck = new Aotutruck(strs[i].Split(':')[2]);
                 }
-                parkingStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = car;
+                parkingStages[counter][counterTruck++] = Truck;
             }
+        }
+        /// <summary>
+        /// Сортировка уровней
+        /// </summary>
+        public void Sort()
+        {
+            parkingStages.Sort();
         }
     }
 }

@@ -43,6 +43,7 @@
             this.загрузитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.Sort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -121,7 +122,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(902, 192);
+            this.button1.Location = new System.Drawing.Point(913, 193);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 14;
@@ -170,11 +171,22 @@
             // 
             this.saveFileDialog1.Filter = "txt file | *.txt";
             // 
+            // Sort
+            // 
+            this.Sort.Location = new System.Drawing.Point(913, 138);
+            this.Sort.Name = "Sort";
+            this.Sort.Size = new System.Drawing.Size(102, 31);
+            this.Sort.TabIndex = 16;
+            this.Sort.Text = "Сортировать";
+            this.Sort.UseVisualStyleBackColor = true;
+            this.Sort.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 493);
+            this.Controls.Add(this.Sort);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox1);
@@ -215,5 +227,6 @@
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button Sort;
     }
 }

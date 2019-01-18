@@ -8,15 +8,12 @@ using WindowsFormTruck;
 
 namespace WindowsFormsTrucks
 {
-    public class Aotutruck : Truck 
+    public class Aotutruck : Truck , IComparable<Aotutruck>, IEquatable<Aotutruck>
     {
         /// <summary>
         /// Дополнительный цвет
         /// </summary>
         public Color DopColor { private set; get; }
-
-       
-        
         /// <summary> 
         /// Признак наличия лампочки
         /// </summary> 
@@ -90,6 +87,73 @@ namespace WindowsFormsTrucks
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Lamp + ";" + Tilt + ";";
         }
+        /// <summary>
+        /// Метод интерфейса IComparable для класса Aotutruck
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(Aotutruck other)
+        {
+            var res = (this is Truck).CompareTo(other is Truck);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+           
+            return 0;
+        }
+        /// <summary>
+        /// Метод интерфейса IEquatable для класса Aotutruck
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Aotutruck other)
+        {
+            var res = (this as Truck).Equals(other as Truck);
+            if (!res)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            return true;
+
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            Aotutruck carObj = obj as Aotutruck;
+            if (carObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
-    }
+}
 
