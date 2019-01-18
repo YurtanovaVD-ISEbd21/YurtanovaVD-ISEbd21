@@ -129,52 +129,5 @@ namespace WindowsFormsCars
                 }
             }
         }
-        /// <summary>
-        /// Обработка нажатия пункта меню "Сохранить"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    parking.SaveData(saveFileDialog1.FileName);
-                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    logger.Info("Сохранено в файл " + saveFileDialog1.FileName);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-        /// <summary>
-        /// Обработка нажатия пункта меню "Загрузить"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    parking.LoadData(openFileDialog1.FileName);
-                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    logger.Info("Загружено из файла " + openFileDialog1.FileName);
-                }
-                catch (ParkingOccupiedPlaceException ex)
-                {
-                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                Draw();
-            }
-        }
     }
 }
