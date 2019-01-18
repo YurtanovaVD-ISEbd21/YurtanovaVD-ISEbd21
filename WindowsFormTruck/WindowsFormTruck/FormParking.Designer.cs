@@ -1,4 +1,4 @@
-﻿namespace WindowsFormTruck
+﻿namespace WindowsFormsCars
 {
     partial class FormParking
     {
@@ -83,7 +83,7 @@
             this.buttonTake.TabIndex = 9;
             this.buttonTake.Text = "Забрать";
             this.buttonTake.UseVisualStyleBackColor = true;
-            this.buttonTake.Click += new System.EventHandler(this.buttonTake_Click);
+            this.buttonTake.Click += new System.EventHandler(this.buttonTakeCar_Click);
             // 
             // pictureBoxTake
             // 
@@ -127,7 +127,7 @@
             this.button1.TabIndex = 14;
             this.button1.Text = "Заказать авто";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.buttonSetCar_Click);
             // 
             // menuStrip1
             // 
@@ -150,14 +150,14 @@
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem1
             // 
             this.загрузитьToolStripMenuItem1.Name = "загрузитьToolStripMenuItem1";
-            this.загрузитьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.загрузитьToolStripMenuItem1.Text = "Загрузить ";
             this.загрузитьToolStripMenuItem1.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WindowsFormTruck;
 
-namespace WindowsFormTruck
+namespace WindowsFormsCars
 {
     /// <summary>
     /// Параметризованны класс для хранения набора объектов от интерфейса ITransport
@@ -61,7 +59,7 @@ namespace WindowsFormTruck
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -90,7 +88,7 @@ namespace WindowsFormTruck
                 p._places.Remove(index);
                 return car;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
         /// <summary>
         /// Метод проверки заполнености парковочного места (ячейки массива)
@@ -127,8 +125,7 @@ namespace WindowsFormTruck
             {//отрисовываем, по 5 мест на линии
                 for (int j = 0; j < 6; ++j)
                 {//линия рамзетки места
-                    g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,
-                    i * _placeSizeWidth + 110, j * _placeSizeHeight);
+                    g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight, i * _placeSizeWidth + 110, j * _placeSizeHeight);
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
@@ -146,7 +143,7 @@ namespace WindowsFormTruck
                 {
                     return _places[ind];
                 }
-                return null;
+                throw new ParkingNotFoundException(ind);
             }
             set
             {
@@ -154,6 +151,10 @@ namespace WindowsFormTruck
                 {
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 15, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
                 }
             }
         }
