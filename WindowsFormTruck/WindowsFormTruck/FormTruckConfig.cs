@@ -71,9 +71,9 @@ namespace WindowsFormsCars
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void label1_MouseDown(object sender, MouseEventArgs e)
+        private void labelTruck_MouseDown(object sender, MouseEventArgs e)
         {
-            label1.DoDragDrop(label1.Text, DragDropEffects.Move | DragDropEffects.Copy);
+            labelTruck.DoDragDrop(labelTruck.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
         /// <summary>
         /// Проверка получаемой информации (ее типа на соответствие требуемому)
@@ -164,38 +164,8 @@ namespace WindowsFormsCars
             Close();
         }
 
-        private void panelYellow_MouseDown(object sender, MouseEventArgs e)
-        {
 
-        }
-        private void panelRed_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-        private void panelGreen_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-        private void panelGray_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-        private void panelBlue_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-        private void panelWhite_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-        private void panelGold_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-        private void panelBlack_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
+     
 
         private void buttonOk_Click_1(object sender, EventArgs e)
         {
@@ -208,9 +178,9 @@ namespace WindowsFormsCars
 
 
 
-        private void label2_MouseDown(object sender, MouseEventArgs e)
+        private void labelAotutruck_MouseDown(object sender, MouseEventArgs e)
         {
-            label2.DoDragDrop(label2.Text, DragDropEffects.Move | DragDropEffects.Copy);
+            labelAotutruck.DoDragDrop(labelAotutruck.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
 
 
