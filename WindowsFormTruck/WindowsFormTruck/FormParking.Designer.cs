@@ -37,16 +37,23 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxParking
             // 
             this.pictureBoxParking.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxParking.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxParking.Location = new System.Drawing.Point(0, 24);
             this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(1048, 493);
+            this.pictureBoxParking.Size = new System.Drawing.Size(1048, 469);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
             // 
@@ -122,6 +129,47 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1048, 24);
+            this.menuStrip1.TabIndex = 15;
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem1});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.файлToolStripMenuItem.Text = "Файл ";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            // 
+            // загрузитьToolStripMenuItem1
+            // 
+            this.загрузитьToolStripMenuItem1.Name = "загрузитьToolStripMenuItem1";
+            this.загрузитьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem1.Text = "Загрузить ";
+            this.загрузитьToolStripMenuItem1.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "txt file | *.txt";
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,11 +184,15 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Take);
             this.Controls.Add(this.pictureBoxParking);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormParking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Парковка ";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,5 +209,11 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
